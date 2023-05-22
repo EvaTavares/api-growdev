@@ -1,14 +1,36 @@
 import express, { Request, Response } from "express";
 import { Growdever } from "./models/growdev";
+import { growdevers } from "./database/growdevers";
+import { normalize } from "path";
+import { GrowdeverController } from "./controllers/growdever.controller";
+import { growdeverRoutes } from "./routes/growdever.routes";
 
 const app = express();
+app.use(express.json());
 
-app.get("/", (req: Request, res: Response) => {
-  console.log("entrou na rota");
-  const growdever1 = new Growdever("gr1", "eva", 23);
-  res.status(200).send({ ok: true, data: growdever1.toJson() });
-});
+app.use("/growdever", growdeverRoutes());
 
-app.listen(3333, () => {
-  console.log("API is running");
-});
+//Rotas de growdever => /growdever
+//listar growdevers
+//http://localhost:3333/growdever?idade=20
+// app.get("/growdever", new GrowdeverController().list);
+
+// //Obter um Growdever por ID
+// //http://localhost:3333/growdever/:id
+// //http://localhost:3333/growdever/1
+// app.get("/growdever/:id", new GrowdeverController().get);
+
+// //Criar um growdever
+// //POST http://localhost:3333/growdever
+// //aao.post("/growdever", (req:Request, res:Response) =>{}})
+// app.post("/growdever", new GrowdeverController().create);
+
+// //DELETE
+// app.delete("/growdever:id", new GrowdeverController().delete);
+
+// //UPDATE
+// app.put("/growdever:id", new GrowdeverController().update);
+
+// app.listen(3333, () => {
+//   console.log("API is running");
+// });

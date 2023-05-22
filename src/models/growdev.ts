@@ -1,9 +1,10 @@
+import { v4 as createUuid } from "uuid";
 export class Growdever {
-  constructor(
-    private _id: string,
-    private _nome: string,
-    private _idade: number
-  ) {}
+  private _id: string;
+
+  constructor(private _nome: string, private _idade: number) {
+    this._id = createUuid();
+  }
 
   public get id() {
     return this._id;
@@ -15,6 +16,9 @@ export class Growdever {
 
   public get idade() {
     return this._idade;
+  }
+  public set idade(idade: number) {
+    this._idade = idade;
   }
 
   public toJson() {
