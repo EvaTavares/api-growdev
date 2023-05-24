@@ -4,6 +4,7 @@ import { growdevers } from "./database/growdevers";
 import { normalize } from "path";
 import { GrowdeverController } from "./controllers/growdever.controller";
 import { growdeverRoutes } from "./routes/growdever.routes";
+import { skillRoutes } from "./routes/skill.routes";
 
 const app = express();
 app.use(express.json());
